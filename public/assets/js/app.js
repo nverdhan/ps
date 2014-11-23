@@ -1,4 +1,4 @@
-var psApp = angular.module('psApp', ['ng','ngAnimate','ui.router','ngAria','ngSanitize','ngCookies','ngProgress', 'ngMaterial']);
+var psApp = angular.module('psApp', ['ng','ngAnimate','ui.router','ngTable','ngAria','ngSanitize','ngCookies','ngProgress', 'ngMaterial']);
 
 psApp.config(function($httpProvider) {
 
@@ -58,8 +58,8 @@ psApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
           views:{
             '' : {templateUrl: 'templates/home.html'},
 
-            'header@setup' : {
-              templateUrl: 'templates/header.html',
+            'toolbar@setup' : {
+              templateUrl: 'templates/toolbar.html',
             },
 
             'mainpage@setup' : {
@@ -67,8 +67,8 @@ psApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
               controller: 'SetupController'
             },
 
-            'footer@setup' : {
-              templateUrl: 'templates/footer.html'
+            'newpaper@setup' : {
+              templateUrl: 'templates/newpaper.html'
             }
           }
         })
@@ -242,6 +242,79 @@ psApp.filter('unsafe', function($sce) {
     };
 });
 
-psApp.controller('SetupController', function(){
+psApp.controller('SetupController', function($scope, $filter, ngTableParams){
+  var prevexamdata = [{name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Completed"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Completed"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "09/09/2014", status: "Completed"},
+  {name: "Rotational Motion", subject: "Physics", date: "08/02/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/08/2014", status: "Completed"},
+  {name: "Electricity", subject: "Physics", date: "08/02/2014", status: "Completed"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Completed"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/03/2014", status: "Completed"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "28/04/2014", status: "Completed"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/04/2014", status: "Draft"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Completed"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "18/06/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "17/06/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Completed"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "28/04/2014", status: "Completed"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/04/2014", status: "Draft"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Completed"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "18/06/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "17/06/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "28/04/2014", status: "Completed"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/04/2014", status: "Draft"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Completed"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "18/06/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "17/06/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "28/04/2014", status: "Completed"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/04/2014", status: "Draft"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Completed"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "18/06/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "17/06/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "28/04/2014", status: "Completed"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/04/2014", status: "Draft"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Completed"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "18/06/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "17/06/2014", status: "Draft"},
+  {name: "Human Health and Diseases", subject: "Biology", date: "28/06/2014", status: "Completed"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/04/2014", status: "Draft"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Draft"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Completed"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Completed"},
+  {name: "Differentiation and AOI", subject: "Mathematics", date: "08/05/2014", status: "Completed"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "18/06/2014", status: "Completed"},
+  {name: "Electrochemistry", subject: "Chemistry", date: "17/06/2014", status: "Completed"}];
+
+  $scope.tableParams = new ngTableParams({
+        page: 1,            // show first page
+        count: 50          // count per page
+    }, {
+        groupBy: 'status',
+        total: prevexamdata.length,
+        getData: function($defer, params) {
+            var orderedData = params.sorting() ?
+                    $filter('orderBy')(prevexamdata, $scope.tableParams.orderBy()) :
+                    data;
+
+            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+        }
+    });
 
 });

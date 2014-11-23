@@ -1,0 +1,14 @@
+ .face {
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  max-height: 32px;
+  margin: 16px; }
+
+.item-container{
+	background-color: #EEEEEE!important;
+}
+
+.selector{
+	background-color: #009688;
+	color: #ffffff;
+}

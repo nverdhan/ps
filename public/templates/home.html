@@ -1,5 +1,7 @@
- <header ui-view="header"> </header>
+	<md-toolbar  class="md-medium-tall md-whiteframe-z2"  md-theme="teal" ui-view="toolbar" layout-align="space-around"> </md-toolbar>
 
- <div flex layout="row" layout-phone="column" ui-view="mainpage"></div>
+	<div ui-view="newpaper"></div>
 
- <footer ui-view="footer"></footer>
+ 	<md-content flex layout = "column" ui-view="mainpage" class = "item-container"> </md-content>
+
+ 	<!-- <footer ui-view="footer"></footer> -->

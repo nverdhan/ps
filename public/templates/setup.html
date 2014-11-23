@@ -1,8 +1,35 @@
-    <aside flex-sm="33" flex-md="20">
-      Menu<br>
-      [flex-sm="33"][flex-md="20"]
-    </aside>
+<div>
+  <span flex>Previous question papers</span>
+</div>
+<div layout="row" layout-padding> 
+<div flex=15></div>
+<div flex>
+<div layout="row" layout-tablet="column" layout-align="center" layout-fill>
+    <table ng-table="tableParams" class="table">
+    <tbody ng-repeat="group in $groups">
+        <tr class="ng-table-group">
+            <td colspan="{{$columns.length}}">
+                <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                    <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+                    <strong>{{ group.value }}</strong>
+                </a>
+            </td>
+        </tr>
+        <tr ng-hide="group.$hideRows" ng-repeat="exam in group.data">
+            <td sortable="name" data-title="'Name'">
+                {{exam.name}}
+            </td>
+            <td sortable="date" data-title="'Date'">
+                {{exam.date}}
+            </td>
+            <td sortable="subject" data-title="'Subject'">
+                {{exam.subject}}
+            </td>
+        </tr>
+    </tbody>
+    </table>
+    </div>
+</div>
+<div flex=15></div>
+</div>
 
-    <main flex>
-      Main [flex]
-    </main>
