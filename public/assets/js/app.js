@@ -1,4 +1,4 @@
-var psApp = angular.module('psApp', ['ng','ngAnimate','ui.router','ngTable','ngAria','ngSanitize','ngCookies','ngProgress', 'ngMaterial']);
+var psApp = angular.module('psApp', ['ng','ui.router','ngSanitize','ngCookies','ngProgress', 'ngMaterial']);
 
 psApp.config(function($httpProvider) {
 
@@ -242,7 +242,7 @@ psApp.filter('unsafe', function($sce) {
     };
 });
 
-psApp.controller('SetupController', function($scope, $filter, ngTableParams){
+psApp.controller('SetupController', function($scope, $filter){
   var prevexamdata = [{name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Completed"},
   {name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Completed"},
   {name: "Electrochemistry", subject: "Chemistry", date: "09/09/2014", status: "Completed"},
@@ -302,19 +302,32 @@ psApp.controller('SetupController', function($scope, $filter, ngTableParams){
   {name: "Electrochemistry", subject: "Chemistry", date: "18/06/2014", status: "Completed"},
   {name: "Electrochemistry", subject: "Chemistry", date: "17/06/2014", status: "Completed"}];
 
-  $scope.tableParams = new ngTableParams({
-        page: 1,            // show first page
-        count: 50          // count per page
-    }, {
-        groupBy: 'status',
-        total: prevexamdata.length,
-        getData: function($defer, params) {
-            var orderedData = params.sorting() ?
-                    $filter('orderBy')(prevexamdata, $scope.tableParams.orderBy()) :
-                    data;
 
-            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+   var tabs = [
+      { title: 'Draft', content: "Tabs will become paginated if there isn't enough room for them."},
+      { title: 'Completed', content: "You can swipe left and right on a mobile device to change tabs."}
+    ];
+    $scope.tabs = tabs;
+    $scope.selectedIndex = 2;
+    $scope.announceSelected = announceSelected;
+    $scope.announceDeselected = announceDeselected;
+    $scope.addTab = function (title, view) {
+      view = view || title + " Content View";
+      tabs.push({ title: title, content: view, disabled: false});
+    };
+    $scope.removeTab = function (tab) {
+      for (var j = 0; j < tabs.length; j++) {
+        if (tab.title == tabs[j].title) {
+          $scope.tabs.splice(j, 1);
+          break;
         }
-    });
+      }
+    };
+    function announceDeselected(tab) {
+      $scope.farewell = 'Goodbye ' + tab.title + '!';
+    }
+    function announceSelected(tab) {
+      $scope.greeting = 'Hello ' + tab.title + '!';
+    }
 
 });

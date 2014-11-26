@@ -1,34 +1,22 @@
-<div>
-  <span flex>Previous question papers</span>
+asdsds
+<div layout="row" layout-padding> 
+<div flex=15></div>
+<div flex>
+    <span flex>Previous question papers</span>
+</div>
+<div flex=15></div>
 </div>
 <div layout="row" layout-padding> 
 <div flex=15></div>
 <div flex>
-<div layout="row" layout-tablet="column" layout-align="center" layout-fill>
-    <table ng-table="tableParams" class="table">
-    <tbody ng-repeat="group in $groups">
-        <tr class="ng-table-group">
-            <td colspan="{{$columns.length}}">
-                <a href="" ng-click="group.$hideRows = !group.$hideRows">
-                    <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
-                    <strong>{{ group.value }}</strong>
-                </a>
-            </td>
-        </tr>
-        <tr ng-hide="group.$hideRows" ng-repeat="exam in group.data">
-            <td sortable="name" data-title="'Name'">
-                {{exam.name}}
-            </td>
-            <td sortable="date" data-title="'Date'">
-                {{exam.date}}
-            </td>
-            <td sortable="subject" data-title="'Subject'">
-                {{exam.subject}}
-            </td>
-        </tr>
-    </tbody>
-    </table>
+
+    <md-tabs md-selected="selectedIndex">
+    <md-tab ng-repeat="tab in tabs" md-on-select="announceSelected(tab)" md-on-deselect="announceDeselected(tab)" ng-disabled="tab.disabled" label="{{tab.title}}">
+    <div class="demo-tab tab{{$index%4}}" layout="column" layout-fill layout-align="space-around center">
+        <div ng-bind="tab.content"></div>
     </div>
+    </md-tab>
+  </md-tabs>
 </div>
 <div flex=15></div>
 </div>
