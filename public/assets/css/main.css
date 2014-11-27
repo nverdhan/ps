@@ -2,8 +2,12 @@
   border-radius: 30px;
   border: 1px solid #ddd;
   max-height: 32px;
-  margin: 16px; }
-
+  }
+/*.profilepic md-button-inner{
+  padding: 2px;
+  width: 36px;
+  height: 36px;
+}*/
 .selector{
 	background-color: #009688;
 	color: #ffffff;
