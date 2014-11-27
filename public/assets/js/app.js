@@ -304,8 +304,8 @@ psApp.controller('SetupController', function($scope, $filter){
 
 
    var tabs = [
-      { title: 'Draft', content: "Tabs will become paginated if there isn't enough room for them."},
-      { title: 'Completed', content: "You can swipe left and right on a mobile device to change tabs."}
+      { title: 'Draft', content: "Draft question papers"},
+      { title: 'Completed', content: "Completed Question Papers"}
     ];
     $scope.tabs = tabs;
     $scope.selectedIndex = 2;
