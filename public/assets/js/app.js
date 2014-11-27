@@ -1,4 +1,4 @@
-var psApp = angular.module('psApp', ['ng','ui.router','ngSanitize','ngCookies','ngProgress', 'ngMaterial']);
+var psApp = angular.module('psApp', ['ng','ngAnimate','ngAria','ui.router','ngSanitize','ngCookies','ngProgress', 'ngMaterial']);
 
 psApp.config(function($httpProvider) {
 
@@ -303,31 +303,17 @@ psApp.controller('SetupController', function($scope, $filter){
   {name: "Electrochemistry", subject: "Chemistry", date: "17/06/2014", status: "Completed"}];
 
 
-   var tabs = [
-      { title: 'Draft', content: "Draft question papers"},
-      { title: 'Completed', content: "Completed Question Papers"}
-    ];
-    $scope.tabs = tabs;
-    $scope.selectedIndex = 2;
-    $scope.announceSelected = announceSelected;
-    $scope.announceDeselected = announceDeselected;
-    $scope.addTab = function (title, view) {
-      view = view || title + " Content View";
-      tabs.push({ title: title, content: view, disabled: false});
+    $scope.selectedIndex = 0
+    $scope.next = function() {
+      $scope.selectedIndex = Math.min($scope.selectedIndex + 1, 1) ;
+      console.log('next');
     };
-    $scope.removeTab = function (tab) {
-      for (var j = 0; j < tabs.length; j++) {
-        if (tab.title == tabs[j].title) {
-          $scope.tabs.splice(j, 1);
-          break;
-        }
-      }
+    $scope.previous = function() {
+      $scope.selectedIndex = Math.max($scope.selectedIndex - 1, 0);
     };
-    function announceDeselected(tab) {
-      $scope.farewell = 'Goodbye ' + tab.title + '!';
-    }
-    function announceSelected(tab) {
-      $scope.greeting = 'Hello ' + tab.title + '!';
+    $scope.announceSelected = function(tabindex){
+      $scope.selectedIndex = tabindex;
+      console.log('selected')
     }
 
 });

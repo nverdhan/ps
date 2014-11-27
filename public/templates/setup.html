@@ -1,14 +1,25 @@
 <div layout="row" layout-padding flex> 
-<div flex=15></div>
-<div flex>
+<div flex=15>{{selectedIndex}}</div>
+<div flex class="tabsdemoStaticTabs">
 
-    <md-tabs md-selected="selectedIndex" md-theme= "teal">
-    <md-tab ng-repeat="tab in tabs" md-on-select="announceSelected(tab)" md-on-deselect="announceDeselected(tab)" ng-disabled="tab.disabled" label="{{tab.title}}">
-    <div class="demo-tab tab{{$index%4}}" layout="column" layout-fill layout-align="space-around center">
-        <div ng-bind="tab.content"></div>
-    </div>
-    </md-tab>
-  </md-tabs>
+    <md-tabs md-selected="selectedIndex" md-theme = "teal">
+      <md-tab id="tab1" aria-controls="tab1-content">
+        Draft {{data.selectedIndex}}
+      </md-tab>
+      <md-tab id="tab2" aria-controls="tab2-content">
+        Completed
+      </md-tab>
+    </md-tabs>
+    <ng-switch on="selectedIndex" class="tabpanel-container">
+        <div role="tabpanel" id="tab1-content" aria-labelledby="tab1" ng-switch-when="0" md-swipe-left="next()" md-swipe-right="previous()">
+            View for Item #1<br/>
+            data.selectedIndex = 0
+        </div>
+        <div role="tabpanel" id="tab2-content" aria-labelledby="tab2" ng-switch-when="1" md-swipe-left="next()" md-swipe-right="previous()">
+            View for Item #3<br/>
+            data.selectedIndex = 1
+        </div>
+    </ng-switch>
 </div>
 <div flex=15></div>
 </div>
