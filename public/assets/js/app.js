@@ -243,7 +243,7 @@ psApp.filter('unsafe', function($sce) {
 });
 
 psApp.controller('SetupController', function($scope, $filter){
-  var prevexamdata = [{name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Completed"},
+  $scope.prevexamdata = [{name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Completed"},
   {name: "Electrochemistry", subject: "Chemistry", date: "08/02/2014", status: "Completed"},
   {name: "Electrochemistry", subject: "Chemistry", date: "09/09/2014", status: "Completed"},
   {name: "Rotational Motion", subject: "Physics", date: "08/02/2014", status: "Draft"},

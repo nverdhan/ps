@@ -1,26 +1,69 @@
-<div layout="row" layout-padding flex> 
-<div flex=15>{{selectedIndex}}</div>
-<div flex class="tabsdemoStaticTabs">
+<div layout = 'vertical' layout-fill flex >
+    <div layout="horizontal" layout-padding style = "padding-bottom:0px;"> 
+        <div flex=15></div>
+        <div flex class="tabsdemoStaticTabs">
 
-    <md-tabs selected="selectedIndex" md-theme = "teal">
-      <md-tab id="tab1" aria-controls="tab1content" role="tab">
-        Draft {{selectedIndex}}
-      </md-tab>
-      <md-tab id="tab2" aria-controls="tab2content" role="tab">
-        Completed
-      </md-tab>
-    </md-tabs>
-    <ng-switch on="selectedIndex" class="tabpanel-container">
-        <div role="tabpanel" id="tab1content" aria-labelledby="tab1" ng-switch-when="0" md-swipe-left="next()" md-swipe-right="previous()">
-            View for Item #1<br/>
-            data.selectedIndex = 0
+            <md-tabs selected="selectedIndex" md-theme = "teal" style='text-transform:capitalize!important;'>
+              <md-tab id="tab1" aria-controls="tab1content" role="tab">
+                Drafts
+              </md-tab>
+              <md-tab id="tab2" aria-controls="tab2content" role="tab">
+                Completed
+              </md-tab>
+            </md-tabs>
+            
         </div>
-        <div role="tabpanel" id="tab2content" aria-labelledby="tab2" ng-switch-when="1" md-swipe-left="next()" md-swipe-right="previous()">
-            View for Item #3<br/>
-            data.selectedIndex = 1
+        <div flex=15></div>
+    </div>
+    <div layout="horizontal" layout-padding style = "padding-top:0px;"> 
+        <div flex=15 "padding-top:0px;"></div>
+        <div flex style = "padding-top:0px;" >
+            <ng-switch on="selectedIndex" class="tabpanel-container" flex>
+                    <div role="tabpanel" id="tab1content" aria-labelledby="tab1" ng-switch-when="0" md-swipe-left="next()" md-swipe-right="previous()">
+                        <md-text-float label="Search" flex ng-model="searchText"> </md-text-float>
+                            <md-list>
+                              <md-item ng-repeat="exam in prevexamdata | filter : {status : 'Draft' }: true | filter: searchText">
+                                <md-item-content flex>
+                                  <div layout="row" flex>
+                                    <div flex = 15>
+                                        {{exam.subject}}
+                                    </div>
+                                    <div flex = 70>
+                                        {{exam.name}} {{exam.status}}
+                                    </div>
+                                    <div flex>
+                                        {{exam.date}}
+                                    </div>
+                                  </div>
+                                </md-item-content>
+                                <md-divider ng-if="!$last"></md-divider>
+                              </md-item>
+                            </md-list>
+                    </div>
+                    <div role="tabpanel" id="tab2content" aria-labelledby="tab2" ng-switch-when="1" md-swipe-left="next()" md-swipe-right="previous()">
+                        <md-text-float label="Search" flex ng-model="searchText2"> </md-text-float>
+                            <md-list>
+                              <md-item ng-repeat="exam in prevexamdata | filter : {status : 'Completed' }: true | filter: searchText2">
+                                <md-item-content flex>
+                                  <div layout="row" flex>
+                                    <div flex = 15>
+                                        {{exam.subject}}
+                                    </div>
+                                    <div flex = 70>
+                                        {{exam.name}} {{exam.status}}
+                                    </div>
+                                    <div flex>
+                                        {{exam.date}}
+                                    </div>
+                                  </div>
+                                </md-item-content>
+                                <md-divider ng-if="!$last"></md-divider>
+                              </md-item>
+                            </md-list>
+                    </div>
+            </ng-switch>
         </div>
-    </ng-switch>
-</div>
-<div flex=15></div>
-</div>
+        <div flex=15 "padding-top:0px;"></div>
+        </div>
 
+</div>

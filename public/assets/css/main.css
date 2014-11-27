@@ -8,7 +8,18 @@
 	background-color: #009688;
 	color: #ffffff;
 }
+ input{
+  width: 100%;
+ }
 
+ md-input-group{
+  margin-top: 0px;
+ }
+
+ md-item-content{
+  padding-top: 8px;
+  padding-bottom: 8px;
+ }
 .tabsdemoStaticTabs {
   /*
  * Animation styles
@@ -19,13 +30,13 @@
     background-color: #ffffff; }
   .tabsdemoStaticTabs #tab3-content {
     background-color: #00796B; }
-  .tabsdemoStaticTabs .tabpanel-container {
+/*  .tabsdemoStaticTabs .tabpanel-container {
     display: block;
     position: relative;
     background: white;
     border: 0px solid black;
-    height: 300px;
-    overflow: hidden; }
+    height: 100%;
+    overflow: auto; }
   .tabsdemoStaticTabs [role="tabpanel"] {
     color: black;
     width: 100%;
@@ -51,4 +62,4 @@
     height: 35px; }
   .tabsdemoStaticTabs .after-tabs-area > md-checkbox {
     margin-top: 26px;
-    margin-left: 0px; }
+    margin-left: 0px; }*/
