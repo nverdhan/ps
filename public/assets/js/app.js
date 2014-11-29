@@ -68,7 +68,8 @@ psApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             },
 
             'newpaper@setup' : {
-              templateUrl: 'templates/newpaper.html'
+              templateUrl: 'templates/newpaper.html',
+              controller: 'NewPaperController'
             }
           }
         })
@@ -317,3 +318,42 @@ psApp.controller('SetupController', function($scope, $filter){
     }
 
 });
+
+psApp.controller('NewPaperController', function($scope, $mdDialog){
+  $scope.userName = $scope.userName || 'Bobby';
+  $scope.showGreeting = function ($event) {
+        $mdDialog.show({
+          targetEvent: $event,
+          templateUrl: 'templates/selectsubjectdialog.html',
+            // '<md-dialog>' +
+            // '  <md-content>Hello {{ employee }}!</md-content>' +
+            // '  <div class="md-actions">' +
+            // '    <md-button ng-click="closeDialog()">' +
+            // '      Close Greeting' +
+            // '    </md-button>' +
+            // '  </div>' +
+            // '</md-dialog>',
+          controller: 'GreetingController',
+          onComplete: afterShowAnimation,
+          locals: { employee: $scope.userName }
+        });
+        // When the 'enter' animation finishes...
+        function afterShowAnimation(scope, element, options) {
+           // post-show code here: DOM element focus, etc.
+        }
+    }
+})
+
+psApp.controller('GreetingController', function($scope, $mdDialog, employee){
+  $scope.subjects = [{name: 'Physics', shortname: 'Phy', icon: 'assets/img/phyicon.png'},
+                      {name: 'Chemistry', shortname: 'Che', icon: 'assets/img/cheicon.png'},
+                      {name: 'Mathematics', shortname: 'Mat', icon: 'assets/img/maticon.png'},
+                      {name: 'Biology', shortname: 'Bio', icon: 'assets/img/bioicon.png'}]
+      // Assigned from construction <code>locals</code> options...
+    $scope.employee = employee;
+    $scope.closeDialog = function() {
+      // Easily hides most recent dialog shown...
+      // no specific instance reference is needed.
+      $mdDialog.hide();
+    };
+})

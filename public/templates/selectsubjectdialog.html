@@ -1,0 +1,32 @@
+<md-dialog class="selectsubjectdialog">
+	<div class="md-actions closeDialogX">
+	            <md-button class="md-fab" ng-click="closeDialog()"  aria-label="Close Dialog SelectSubject">
+	        		<md-icon icon="/assets/icons/ic_close_white_24dp.png" style="width: 24px; height: 24px;">
+        			</md-icon> 
+	            </md-button>
+	</div>
+    <md-content>
+    	<img class="dialog-img" src="assets/img/books.png">
+    	  <h2>Select Subject</h2>
+	      <md-list>
+		      <md-item ng-repeat="subject in subjects">
+		        <md-item-content>
+		          <div class="md-tile-left">
+		              <img ng-src="{{subject.icon}}" class="face subjectimg" alt="{{subject.shortname}}">
+		          </div>
+		          <div class="md-tile-content sublist">
+		          	<md-button class="choosesubject" aria-label="SubjectSelector">
+						<h3 style="text-align: left;">{{subject.name}}</h3>			            
+			        </md-button>
+		          </div>
+		          <div class="md-tile-right">
+		          	<md-button aria-label="RandomPaper">
+			            <md-icon icon="assets/img/randomicon.svg" style="width: 24px; height: 24px;"></md-icon>
+			        </md-button>
+		          </div>
+		        </md-item-content>
+		        <md-divider ng-if="!$last"></md-divider>
+		      </md-item>
+    		</md-list>
+	</md-content>
+</md-dialog>

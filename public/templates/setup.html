@@ -22,14 +22,14 @@
                     <div role="tabpanel" id="tab1content" aria-labelledby="tab1" ng-switch-when="0" md-swipe-left="next()" md-swipe-right="previous()">
                         <md-text-float label="Search" flex ng-model="searchText"> </md-text-float>
                             <md-list>
-                              <md-item ng-repeat="exam in prevexamdata | filter : {status : 'Draft' }: true | filter: searchText">
+                              <md-item class='item-link' ng-repeat="exam in prevexamdata | filter : {status : 'Draft' }: true | filter: searchText">
                                 <md-item-content flex>
                                   <div layout="row" flex>
                                     <div flex = 15>
                                         {{exam.subject}}
                                     </div>
                                     <div flex = 70>
-                                        {{exam.name}} {{exam.status}}
+                                        {{exam.name}} 
                                     </div>
                                     <div flex>
                                         {{exam.date}}
@@ -43,14 +43,14 @@
                     <div role="tabpanel" id="tab2content" aria-labelledby="tab2" ng-switch-when="1" md-swipe-left="next()" md-swipe-right="previous()">
                         <md-text-float label="Search" flex ng-model="searchText2"> </md-text-float>
                             <md-list>
-                              <md-item ng-repeat="exam in prevexamdata | filter : {status : 'Completed' }: true | filter: searchText2">
+                              <md-item class='item-link' ng-repeat="exam in prevexamdata | filter : {status : 'Completed' }: true | filter: searchText2">
                                 <md-item-content flex>
                                   <div layout="row" flex>
                                     <div flex = 15>
                                         {{exam.subject}}
                                     </div>
                                     <div flex = 70>
-                                        {{exam.name}} {{exam.status}}
+                                        {{exam.name}} 
                                     </div>
                                     <div flex>
                                         {{exam.date}}
