@@ -1,14 +1,26 @@
 <md-dialog class="selectsubjectdialog">
 	<div class="md-actions closeDialogX">
 	            <md-button class="md-fab" ng-click="closeDialog()"  aria-label="Close Dialog SelectSubject">
-	        		<md-icon icon="/assets/icons/ic_close_white_24dp.png" style="width: 24px; height: 24px;">
+	        		<md-icon icon="assets/img/ic_close_white_24dp.png" style="width: 24px; height: 24px;">
         			</md-icon> 
 	            </md-button>
 	</div>
     <md-content>
     	<img class="dialog-img" src="assets/img/books.png">
-    	  <h2>Select Subject</h2>
+    	  <h2 style="margin-bottom:35px;">Select Subject</h2>
 	      <md-list>
+	      	  <md-item>
+	      	  	<md-item-content style="padding-top: 0px; padding-bottom: 0px; height: 10px;">
+	      	  		<div class="md-tile-left"></div>
+	      	  		<div class="md-tile-content">
+	      	  			<h6>Manually select questions</h6>
+	      	  		</div>
+	      	  		<div class="md-tile-right">
+	      	  			<h6>Random Paper</h6>
+	      	  		</div>
+	      	  </md-item-content>
+	      	  <md-divider ng-if="!$last"></md-divider>
+	      	  </md-item>
 		      <md-item ng-repeat="subject in subjects">
 		        <md-item-content>
 		          <div class="md-tile-left">
@@ -20,7 +32,7 @@
 			        </md-button>
 		          </div>
 		          <div class="md-tile-right">
-		          	<md-button aria-label="RandomPaper">
+		          	<md-button aria-label="RandomPaper" style="width:79px;">
 			            <md-icon icon="assets/img/randomicon.svg" style="width: 24px; height: 24px;"></md-icon>
 			        </md-button>
 		          </div>

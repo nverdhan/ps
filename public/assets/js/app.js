@@ -1,4 +1,4 @@
-var psApp = angular.module('psApp', ['ng','ngAnimate','ngAria','ui.router','ngSanitize','ngCookies','ngProgress', 'ngMaterial']);
+var psApp = angular.module('psApp', ['ng','ngAnimate','ngAria','ui.router','ngSanitize','ngCookies', 'ngMaterial']);
 
 psApp.config(function($httpProvider) {
 
@@ -307,15 +307,10 @@ psApp.controller('SetupController', function($scope, $filter){
     $scope.selectedIndex = 0
     $scope.next = function() {
       $scope.selectedIndex = Math.min($scope.selectedIndex + 1, 1) ;
-      console.log($scope.tabindex);
     };
     $scope.previous = function() {
       $scope.selectedIndex = Math.max($scope.selectedIndex - 1, 0);
     };
-    $scope.announceSelected = function(tabindex){
-      $scope.selectedIndex = tabindex;
-      console.log('selected')
-    }
 
 });
 
