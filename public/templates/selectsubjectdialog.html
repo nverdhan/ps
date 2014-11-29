@@ -27,7 +27,7 @@
 		              <img ng-src="{{subject.icon}}" class="face subjectimg" alt="{{subject.shortname}}">
 		          </div>
 		          <div class="md-tile-content sublist">
-		          	<md-button class="choosesubject" aria-label="SubjectSelector">
+		          	<md-button class="choosesubject" aria-label="SubjectSelector" ng-click = "getTopicList(subject.id)">
 						<h3 style="text-align: left;">{{subject.name}}</h3>			            
 			        </md-button>
 		          </div>

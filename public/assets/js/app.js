@@ -368,21 +368,24 @@ psApp.controller('NewPaperController', function($scope, $mdDialog){
 })
 
 psApp.controller('GreetingController', function($scope, $rootScope, $state, $http, $mdDialog, employee, $cookieStore){
-  $scope.subjects = [{name: 'Physics', shortname: 'Phy', icon: 'assets/img/phyicon.png'},
-                      {name: 'Chemistry', shortname: 'Che', icon: 'assets/img/cheicon.png'},
-                      {name: 'Mathematics', shortname: 'Mat', icon: 'assets/img/maticon.png'},
-                      {name: 'Biology', shortname: 'Bio', icon: 'assets/img/bioicon.png'}]
+  $scope.subjects = [{id: 1, name: 'Physics', shortname: 'Phy', icon: 'assets/img/phyicon.png'},
+                      {id: 2, name: 'Chemistry', shortname: 'Che', icon: 'assets/img/cheicon.png'},
+                      {id: 3, name: 'Mathematics', shortname: 'Mat', icon: 'assets/img/maticon.png'},
+                      {id: 4, name: 'Biology', shortname: 'Bio', icon: 'assets/img/bioicon.png'}]
       // Assigned from construction <code>locals</code> options...
     $scope.employee = employee;
     $scope.closeDialog = function() {
       // Easily hides most recent dialog shown...
       // no specific instance reference is needed.
       $mdDialog.hide();
-        $http.post('getTopics',{'subjectid':1}).success(function(data, status, headers, config) {
+    };
+
+    $scope.getTopicList = function(subjectid){
+      $http.post('getTopics',{'subjectid':subjectid}).success(function(data, status, headers, config) {
           $cookieStore.put('topics', data);
           $state.go('setpaper');
         });
-    };
+    }
 })
 psApp.controller('HomeController', function($scope, $mdSidenav, $state, $stateParams){
   $scope.toggleLeft = function() {
