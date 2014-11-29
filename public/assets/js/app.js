@@ -56,7 +56,8 @@ psApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('setup',{
           url: '/setup',
           views:{
-            '' : {templateUrl: 'templates/home.html'},
+            '' : {templateUrl: 'templates/home.html',
+                  controller: 'HomeController'},
 
             'toolbar@setup' : {
               templateUrl: 'templates/toolbar.html',
@@ -70,6 +71,10 @@ psApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             'newpaper@setup' : {
               templateUrl: 'templates/newpaper.html',
               controller: 'NewPaperController'
+            },
+
+            'leftsidenav@setup': {
+              template: ""
             }
           }
         })
@@ -165,7 +170,6 @@ psApp.factory("FetchService", function($http) {
     getExams: function(){
       return $http.get('/getExams')
     }
-
   };
 });
 
@@ -363,7 +367,7 @@ psApp.controller('NewPaperController', function($scope, $mdDialog){
     }
 })
 
-psApp.controller('GreetingController', function($scope, $mdDialog, employee){
+psApp.controller('GreetingController', function($scope, $rootScope, $state, $http, $mdDialog, employee, $cookieStore){
   $scope.subjects = [{name: 'Physics', shortname: 'Phy', icon: 'assets/img/phyicon.png'},
                       {name: 'Chemistry', shortname: 'Che', icon: 'assets/img/cheicon.png'},
                       {name: 'Mathematics', shortname: 'Mat', icon: 'assets/img/maticon.png'},
@@ -374,21 +378,51 @@ psApp.controller('GreetingController', function($scope, $mdDialog, employee){
       // Easily hides most recent dialog shown...
       // no specific instance reference is needed.
       $mdDialog.hide();
+        $http.post('getTopics',{'subjectid':1}).success(function(data, status, headers, config) {
+          $cookieStore.put('topics', data);
+          $state.go('setpaper');
+        });
     };
 })
-psApp.controller('HomeController', function($scope, $mdSidenav){
+psApp.controller('HomeController', function($scope, $mdSidenav, $state, $stateParams){
   $scope.toggleLeft = function() {
     $mdSidenav('left').toggle();
   };
 
+  $scope.hideSideNav = function(){
+    if($state.includes('setup')){
+      return true;
+    }else{
+      return false;
+    }
+  }
 
 
 })
-psApp.controller('LeftCtrl', function($scope, $timeout, $mdSidenav){
-    $scope.closeleftsidenav = function() {
+
+psApp.controller('SetpaperController',function($http, $scope, $rootScope, $mdSidenav){
+
+})
+
+psApp.controller('LeftCtrl', function($scope, $timeout, $mdSidenav, $rootScope, $cookieStore){
+  $scope.selectedtopic = [];
+  $scope.closeleftsidenav = function() {
       $mdSidenav('left').close();
   };
-})
-psApp.controller('SetpaperController',function($scope, $rootScope, $mdSidenav){
 
+    $rootScope.topics = $cookieStore.get('topics');
+    $rootScope.selectedtopic = $scope.selectedtopic;
+    $scope.show = function(){
+      console.log($scope.selectedtopic);
+    }
+  // $scope.updateSelectedTopic = function(){
+  //   $rootScope.selectedtopic = [];
+  //   console.log('a');
+  //   for(i = 0; i < $rootScope.topics[0].topic.length; i++){
+  //     var topicnow = $rootScope.topics[0].topic[i];
+  //     if(topicnow.topicselected == true){
+  //       $rootScope.selectedtopic.push(topicnow);
+  //     }
+  //   }
+  // }
 })

@@ -1,9 +1,21 @@
-      <md-content class="md-padding" ng-controller="LeftCtrl">
+      <md-content layout-padding>
+        <div style="padding-top:80px;" hide-md></div>
         <md-button ng-click="closeleftsidenav()" class="md-primary"  hide-md aria-label="closeleftctrl">
           Close Sidenav Left
         </md-button>
-        <p hide show-gt-md>
-          This sidenav is locked open on your device. To go back to the default behavior,
-          narrow your display.
-        </p>
+
+        <section layout="horizontal" flex>
+        <img class = "subjectimg face"src={{topics[0].icon}} style="margin-right: 10px;">
+        <h3 flex>  {{topics[0].subjectname}}</h3>
+        <md-button aria-label="RandomPaper" style="width:79px;" layout-arrange="end center">
+          <md-icon icon="assets/img/randomicon.svg" style="width: 24px; height: 24px;"></md-icon>
+        </md-button>
+        </section>
+
+        <md-divider></md-divider>
+
+        <md-checkbox ng-repeat="topic in topics[0].topic" ng-model="selectedtopic[$index]" ng-click = "show()" aria-label="{{topic.id}}">
+          {{topic.topicname}} {{ topic.topicid }}
+        </md-checkbox>
+
       </md-content>

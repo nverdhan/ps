@@ -5,9 +5,10 @@
 		<md-toolbar  class="md-medium-tall md-whiteframe-z2"   md-theme="teal" ui-view="toolbar" layout-align="space-around"> </md-toolbar>
 		<section layout="horizontal">	
 			
-			<md-sidenav class="md-sidenav-left md-whiteframe-z1" ng-hide="showSideNav()" component-id="left" is-locked-open="$media('md')" ui-view="leftsidenav"></md-sidenav>
+			<md-sidenav class="md-sidenav-left md-whiteframe-z1 topiclistsidenav" ng-hide="hideSideNav()" component-id="left" is-locked-open="$media('md')" ui-view="leftsidenav"></md-sidenav>
 	 		
-	 		<md-content class="md-padding" flex  ui-view="mainpage"> </md-content>
+	 		<md-content class="md-padding" flex  ui-view="mainpage"> 
+	 		</md-content>
 
 	 </section>
 	</div>

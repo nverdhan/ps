@@ -8,3 +8,4 @@ class SelectSubjectController extends BaseController {
     $subject = Subject::find($subjectid);
     return Response::json($subject->getTopics());
   }
+}

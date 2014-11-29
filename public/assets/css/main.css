@@ -5,6 +5,7 @@
   }
   .subjectimg.face{
     width: 50px;
+    height: 50px;
   }
 /*.profilepic md-button-inner{
   padding: 2px;
@@ -17,6 +18,12 @@
   margin-top: -21px!important;
   margin-right: -21px;
 }
+
+.topiclistsidenav{
+  background-color: red;
+  z-index: 1;
+}
+
 .closeDialogX{
   top:0px;
   right: 0px;
