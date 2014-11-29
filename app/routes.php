@@ -20,3 +20,5 @@ Route::get('/', function()
 	return View::make('papersetter');
 });
 
+Route::post('getTopics', array(
+    'uses' => 'SelectSubjectController@postTopics'));

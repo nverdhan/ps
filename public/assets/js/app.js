@@ -74,6 +74,30 @@ psApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
           }
         })
 
+        .state('setpaper',{
+          url: '/setpaper',
+          views:{
+            '': {
+              templateUrl: 'templates/home.html',
+              controller: 'HomeController',
+            },
+            'toolbar@setpaper' : {
+              templateUrl: 'templates/toolbar.html',
+            },
+
+            'mainpage@setpaper' : {
+              templateUrl: 'templates/setpaper.html',
+              controller: 'SetpaperController'
+            },
+
+            'leftsidenav@setpaper': {
+              templateUrl: 'templates/leftsidenav.html',
+              controller: 'LeftCtrl'
+            }
+
+          }
+        })
+
         .state('setup1', {
             url: '/setup1',
             views: {
@@ -351,4 +375,20 @@ psApp.controller('GreetingController', function($scope, $mdDialog, employee){
       // no specific instance reference is needed.
       $mdDialog.hide();
     };
+})
+psApp.controller('HomeController', function($scope, $mdSidenav){
+  $scope.toggleLeft = function() {
+    $mdSidenav('left').toggle();
+  };
+
+
+
+})
+psApp.controller('LeftCtrl', function($scope, $timeout, $mdSidenav){
+    $scope.closeleftsidenav = function() {
+      $mdSidenav('left').close();
+  };
+})
+psApp.controller('SetpaperController',function($scope, $rootScope, $mdSidenav){
+
 })

@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/bower_components/angular-material/themes/brown-theme.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/ng-table.min.css">
 </head>
-<body ui-view layout="column" layout-fill>
+<body ui-view layout="horizontal" layout-fill>
 
 
 	<script src="assets/bower_components/angular/angular.min.js"></script>
