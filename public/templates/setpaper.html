@@ -1,9 +1,17 @@
-<section layout="horizontal" flex>
+<section layout="horizontal" flex ng-hide="true">
 	<md-checkbox ng-repeat="question in questions" class="questioncontainer" aria-label="{{topic.id}}" >
 		<div>
 
 		</div>	
 	</md-checkbox>
+</section>
+
+<section class="q-container">
+	<div ng-repeat="question in questions" class="q-item">
+		<p class = 'qbodytext'>
+		sdcdscsadcdsacdsacs dddddddddd ddddd dddddddddd	sdcdscsadcdsacdsacs dddddddddd ddddd dddddddddd		sdcdscsadcdsacdsacs dddddddddd ddddd dddddddddd		sdcdscsadcdsacdsacs dddddddddd ddddd dddddddddd
+				</p>
+	</div>
 </section>
 
 <md-button ng-click="toggleLeft()" class="md-primary" hide-md>

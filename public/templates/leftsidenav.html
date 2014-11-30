@@ -14,7 +14,7 @@
 
         <md-divider></md-divider>
 
-        <md-checkbox ng-repeat="topic in topics[0].topic" ng-model="selectedtopic[$index]" aria-label="{{topic.id}}" ng-true-value = "{{topic.id}}" ng-false-value = "null">
+        <md-checkbox ng-repeat="topic in topics[0].topic" ng-model="selectedtopic[$index]" aria-label="{{topic.id}}" ng-true-value = "{{topic.id}}" ng-false-value = "null" class="topiclist">
           {{topic.topicname}} {{ topic.topicid }}
         </md-checkbox>
 

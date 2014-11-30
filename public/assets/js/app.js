@@ -405,7 +405,7 @@ psApp.controller('HomeController', function($scope, $mdSidenav, $state, $statePa
 })
 
 psApp.controller('SetpaperController',function($http, $scope, $rootScope, $mdSidenav){
-  var size = 3;
+  var size = 12;
   $scope.questions = new Array(size);
   while(size--) $scope.questions[size] = size;
   console.log($scope.questions);

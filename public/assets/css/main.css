@@ -7,16 +7,50 @@
     width: 50px;
     height: 50px;
   }
-  .questioncontainer {
-    width: 400px!important;
+  .q-container {
+    display: flex;
+    display: -webkit-flex;
+    display: -moz-flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    -webkit-justify-content: space-around;
+    -moz-justify-content: space-around;
+        flex-wrap: wrap;
+    /*align-items: space-between;    
+    -moz-align-items: space-between;
+    -webkit-align-items: space-between;
+     align-content: space-between;    
+    -moz-align-content: space-between;
+    -webkit-align-content: space-between;*/
+}
+  .q-item{
+    flex: 0 0 400px;
+    /*max-height: 50px;*/
+    min-width: min-content;
+    /*max-width: 400px;*/
+    border: 2px solid red;
+    /*align-self: space-between;    
+    -moz-align-self: space-between;
+    -webkit-align-self: space-between;*/
   }
   md-checkbox:focus .md-label {
       border-color: #ffffff;
   }
-  md-checkbox:hover .md-label, md-checkbox:hover .md-icon{
-    -ms-transform: scale(1.05,1.05); /* IE 9 */
-    -webkit-transform: scale(1.05,1.05); /* Chrome, Safari, Opera */
-    transform: scale(1.05,1.05);
+  md-checkbox.md-checked .md-label{
+    color: #46B946;
+  }
+  md-checkbox.md-checked:hover .md-label{
+    color: #46B946;
+  }
+  .md-label{
+    /*-ms-transform: scale(1.05,1); /* IE 9 */*/
+    /*-webkit-transform: scale(1.05,1); /* Chrome, Safari, Opera */*/
+    /*transform: scale(1.05,1);*/
+    color: #616161;
+    transition: color 0.5s ease;
+  }
+  md-checkbox:hover .md-label{
+    color: #000000;
   }
 /*.profilepic md-button-inner{
   padding: 2px;
