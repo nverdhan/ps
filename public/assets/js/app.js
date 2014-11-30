@@ -383,6 +383,7 @@ psApp.controller('GreetingController', function($scope, $rootScope, $state, $htt
     $scope.getTopicList = function(subjectid){
       $http.post('getTopics',{'subjectid':subjectid}).success(function(data, status, headers, config) {
           $cookieStore.put('topics', data);
+          $rootScope.selectedtopic = new Array(data[0].topic.length)
           $state.go('setpaper');
         });
     }
@@ -404,20 +405,21 @@ psApp.controller('HomeController', function($scope, $mdSidenav, $state, $statePa
 })
 
 psApp.controller('SetpaperController',function($http, $scope, $rootScope, $mdSidenav){
-
+  var size = 3;
+  $scope.questions = new Array(size);
+  while(size--) $scope.questions[size] = size;
+  console.log($scope.questions);
 })
 
 psApp.controller('LeftCtrl', function($scope, $timeout, $mdSidenav, $rootScope, $cookieStore){
-  $scope.selectedtopic = [];
+  // $rootScope.selectedtopic = [];
   $scope.closeleftsidenav = function() {
       $mdSidenav('left').close();
   };
 
     $rootScope.topics = $cookieStore.get('topics');
-    $rootScope.selectedtopic = $scope.selectedtopic;
-    $scope.show = function(){
-      console.log($scope.selectedtopic);
-    }
+    // $rootScope.selectedtopic = $scope.selectedtopic;
+    
   // $scope.updateSelectedTopic = function(){
   //   $rootScope.selectedtopic = [];
   //   console.log('a');

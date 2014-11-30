@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html ng-app='psApp' ng-csp ng-cloak>
+<html ng-app='psApp' ng-cloak>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/bower_components/angular-material/themes/teal-theme.css">
 	<link rel="stylesheet" type="text/css" href="assets/bower_components/angular-material/themes/brown-theme.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/ng-table.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/angularCsp.css">
+	<!-- <link rel="stylesheet" type="text/css" href="assets/css/angularCsp.css"> -->
 </head>
 <body ui-view layout="horizontal" layout-fill>
 

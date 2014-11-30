@@ -7,6 +7,17 @@
     width: 50px;
     height: 50px;
   }
+  .questioncontainer {
+    width: 400px!important;
+  }
+  md-checkbox:focus .md-label {
+      border-color: #ffffff;
+  }
+  md-checkbox:hover .md-label, md-checkbox:hover .md-icon{
+    -ms-transform: scale(1.05,1.05); /* IE 9 */
+    -webkit-transform: scale(1.05,1.05); /* Chrome, Safari, Opera */
+    transform: scale(1.05,1.05);
+  }
 /*.profilepic md-button-inner{
   padding: 2px;
   width: 36px;
