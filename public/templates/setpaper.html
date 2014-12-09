@@ -7,11 +7,13 @@
 </section>
 
 <section class="q-container">
-	<md-checkbox ng-repeat="question in questions" class="q-item">
+	<div ng-repeat="question in questions" class="q-item">
+		<md-checkbox>
 		<p class = 'qbodytext'>
 		sdcdscsadcdsacdsacs dddddddddd ddddd dddddddddd	sdcdscsadcdsacdsacs dddddddddd ddddd dddddddddd		sdcdscsadcdsacdsacs dddddddddd ddddd dddddddddd		sdcdscsadcdsacdsacs dddddddddd ddddd dddddddddd
-				</p>
-	</md-checkbox>
+		</p>
+		</md-checkbox>
+	</div>
 </section>
 
 <md-button ng-click="toggleLeft()" class="md-primary" hide-md>

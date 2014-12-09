@@ -28,28 +28,37 @@
     /*max-height: 50px;*/
     min-width: min-content;
     /*max-width: 400px;*/
-    border: 2px solid black;
+    border: 0.5px solid black;
     /*align-self: space-between;    
     -moz-align-self: space-between;
     -webkit-align-self: space-between;*/
   }
-  md-checkbox:focus .md-label {
+  div.q-item md-checkbox{
+    margin: 0px;
+  }
+  div.q-item md-checkbox .md-container{
+    display: block;
+  }
+  div.q-item md-checkbox .md-label{
+    display: block;
+  }
+  md-checkbox.topiclist:focus .md-label {
       border-color: #ffffff;
   }
-  md-checkbox.md-checked .md-label{
+  md-checkbox.topiclist.md-checked .md-label{
     color: #46B946;
   }
-  md-checkbox.md-checked:hover .md-label{
+  md-checkbox.topiclist.md-checked:hover .md-label{
     color: #46B946;
   }
-  .md-label{
+  .md-label.topiclist{
     /*-ms-transform: scale(1.05,1); /* IE 9 */*/
     /*-webkit-transform: scale(1.05,1); /* Chrome, Safari, Opera */*/
     /*transform: scale(1.05,1);*/
     color: #616161;
     transition: color 0.5s ease;
   }
-  md-checkbox:hover .md-label{
+  md-checkbox.topiclist:hover .md-label{
     color: #000000;
   }
 /*.profilepic md-button-inner{
