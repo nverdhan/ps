@@ -15,7 +15,6 @@
     justify-content: space-around;
     -webkit-justify-content: space-around;
     -moz-justify-content: space-around;
-        flex-wrap: wrap;
     /*align-items: space-between;    
     -moz-align-items: space-between;
     -webkit-align-items: space-between;
@@ -25,10 +24,11 @@
 }
   .q-item{
     flex: 0 0 400px;
+    margin-bottom: 10px;
     /*max-height: 50px;*/
     min-width: min-content;
     /*max-width: 400px;*/
-    border: 2px solid red;
+    border: 2px solid black;
     /*align-self: space-between;    
     -moz-align-self: space-between;
     -webkit-align-self: space-between;*/
